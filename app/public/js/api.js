@@ -1,7 +1,7 @@
 // Server calls. Agent runs arrive as SSE over POST, so they're read with a
 // stream reader rather than EventSource (which is GET-only).
 
-const API_BASE_URL = window.location.hostname === 'localhost' ? '' : 'https://raindeer-backend.onrender.com'; // Replace with actual backend URL
+const API_BASE_URL = window.location.hostname === 'localhost' ? '' : 'https://agents-viewer.onrender.com'; // Replace with actual backend URL
 
 const jsonReq = async (url, opts = {}) => {
   const r = await fetch(`${API_BASE_URL}${url}`, {
