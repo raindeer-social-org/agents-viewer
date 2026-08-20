@@ -1,0 +1,421 @@
+{
+  "brand": {
+    "name": "Slay Health",
+    "website": "slay.health",
+    "industry": "",
+    "what": "Preventive health testing for Indian professionals - full-body blood panels booked from a phone, sample collected at home, results read by a doctor within 24 hours.",
+    "audience": "Working professionals, 25-40, metro India",
+    "accountType": "Business",
+    "tone": "Warm and human",
+    "mood": "Bright / Bold",
+    "platforms": [
+      "X"
+    ],
+    "theme": "cobalt"
+  },
+  "campaign": {
+    "goal": "Awareness",
+    "duration": 7,
+    "pieces": 2,
+    "mode": "Full Content Engine",
+    "message": "The first signal shows up years before symptoms.",
+    "startDate": null
+  },
+  "strategy": {
+    "onboard": {
+      "positioning": "Slay Health delivers fast, at-home full-body blood panels for metro Indian professionals so they can prevent illness before it disrupts their careers",
+      "voice": [
+        "warm",
+        "human",
+        "confident",
+        "bold"
+      ],
+      "audience": [
+        {
+          "segment": "Metro Indian professionals, 25-40, full-time employees",
+          "pain": "worry about hidden health issues and lack of time for lab visits"
+        }
+      ],
+      "pillars": [
+        "Preventive health education",
+        "Speedy at-home testing experience",
+        "Doctor-reviewed results",
+        "Lifestyle optimization for busy professionals"
+      ],
+      "proof_points": [
+        {
+          "claim": "Full-body blood panels delivered to your door",
+          "source": "brief"
+        },
+        {
+          "claim": "Results read by a doctor within 24 hours",
+          "source": "brief"
+        },
+        {
+          "claim": "Serves Indian professionals in major metros",
+          "source": "inferred"
+        },
+        {
+          "claim": "Improves early disease detection rates",
+          "source": "inferred"
+        }
+      ],
+      "never_do": [
+        "Use clinical, sterile language",
+        "Promote expensive, invasive tests",
+        "Target rural or non-working audiences"
+      ]
+    },
+    "research": {
+      "trends": [
+        {
+          "signal": "Rise of corporate wellness stipends for preventive care",
+          "why_now": "Indian firms now budget health benefits; employees seek convenient solutions to claim them",
+          "confidence": "high"
+        },
+        {
+          "signal": "Growth of telemedicine platforms integrating home lab kits",
+          "why_now": "Regulatory easing and pandemic habit persistence make bundled digital-plus-lab services attractive",
+          "confidence": "medium"
+        },
+        {
+          "signal": "Increasing awareness of silent diseases (diabetes, hypertension) among 30-s professionals",
+          "why_now": "Recent health-risk surveys show spikes in early-onset chronic conditions, driving demand for proactive testing",
+          "confidence": "medium"
+        }
+      ],
+      "competitor_angles": [
+        "Promote \"doctor-on-call\" chat as the main hook",
+        "Highlight \"lab-partner\" brand prestige over speed",
+        "Focus on price discounts for bulk corporate orders"
+      ],
+      "audience_questions": [
+        "How quickly will I get results and can I share them with my employer's health portal?",
+        "Is the at-home collection kit truly sterile and easy to use without a phlebotomist?",
+        "Will the panel detect early markers for diseases common in my age group?"
+      ],
+      "best_time": {
+        "window": "Tue 10:00-11:30 AM IST",
+        "rationale": "LinkedIn activity peaks mid-morning for Indian professionals checking updates before meetings"
+      },
+      "format_recommendation": "Short carousel post with 4 slides: problem, speed claim, doctor-review badge, CTA to book kit; visual proof drives scroll stops and shares"
+    }
+  },
+  "planning": {
+    "big_idea": "Detect hidden health risks years before they hurt your career",
+    "angle": "Show how early signals let busy pros stay ahead of illness and keep promotions on track",
+    "visual_direction": "Clean, data-driven graphics; muted blues with bold orange accents; real kit photo, doctor badge, timeline arrow from 'signal' to 'career growth'",
+    "cta": "Book your at-home full-body panel now",
+    "plan": [
+      {
+        "title": "Silent Signals, Career Wins",
+        "hook": "Your next promotion shouldn't wait for a health scare",
+        "platform": "LinkedIn",
+        "format": "carousel",
+        "day": 1,
+        "time": "09:30"
+      },
+      {
+        "title": "Fast Results, Faster Growth",
+        "hook": "Get results in 48 hrs and prove your health to your employer",
+        "platform": "LinkedIn",
+        "format": "carousel",
+        "day": 4,
+        "time": "14:00"
+      }
+    ]
+  },
+  "posts": [
+    {
+      "id": "p_mt1tb29srt74",
+      "planKey": "plan-0",
+      "status": "reviewed",
+      "title": "Silent Signals, Career Wins",
+      "hook": "Your next promotion shouldn't wait for a health scare",
+      "platform": "LinkedIn",
+      "format": "carousel",
+      "scheduledAt": "2026-08-20T04:00:00.000Z",
+      "body": "Silent signals can stall a career before a single symptom appears. Early detection isn't a luxury—it's a strategic advantage. Our full-body blood panels arrive at your door, so you can test on your schedule. Within 24 hours a qualified doctor reviews the results and flags hidden risks that could derail performance or promotion prospects. Knowing these signals lets you act before they become setbacks, keeping your professional trajectory on track. Don't wait for a health scare to force a conversation with leadership. Book your at-home full-body panel now and secure the health insight that fuels career wins.",
+      "hashtags": [
+        "careerhealth",
+        "earlydetection",
+        "fullbodytest",
+        "professionaladvantage"
+      ],
+      "review": {
+        "scores": {
+          "brand_fit": 80,
+          "accuracy": 100,
+          "platform_fit": 90,
+          "safety": 90,
+          "personalization": 70
+        },
+        "verdict": "approve",
+        "issues": [],
+        "summary": "All claims are verified, tone matches brand, and it fits LinkedIn limits."
+      },
+      "imagePrompt": "A sleek, modern home office scene with a laptop open to a health dashboard, a discreet medical test kit on the desk, and a confident professional looking focused, soft natural lighting, brand colors muted blue and teal",
+      "altText": "Home office with laptop displaying health results, a medical test kit nearby, and a professional ready for work"
+    },
+    {
+      "id": "p_mt1tb29t64qc",
+      "planKey": "plan-1",
+      "status": "draft",
+      "title": "Fast Results, Faster Growth",
+      "hook": "Get results in 48 hrs and prove your health to your employer",
+      "platform": "LinkedIn",
+      "format": "carousel",
+      "scheduledAt": "2026-08-23T08:30:00.000Z",
+      "body": "",
+      "hashtags": [],
+      "review": null
+    }
+  ],
+  "runs": [
+    {
+      "agent": "reviewer",
+      "name": "Neer",
+      "ms": 11607,
+      "tokens": 1123,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T18:29:08.611Z"
+    },
+    {
+      "agent": "generation",
+      "name": "Kavi",
+      "ms": 1049,
+      "tokens": 1034,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T18:28:57.002Z"
+    },
+    {
+      "agent": "creative",
+      "name": "Keshav",
+      "ms": 886,
+      "tokens": 822,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T18:28:55.952Z"
+    },
+    {
+      "agent": "research",
+      "name": "Ved",
+      "ms": 1100,
+      "tokens": 759,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T18:28:55.066Z"
+    },
+    {
+      "agent": "onboard",
+      "name": "Aarav",
+      "ms": 1107,
+      "tokens": 796,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T18:28:53.964Z"
+    },
+    {
+      "agent": "reviewer",
+      "name": "Neer",
+      "ms": 8574,
+      "tokens": 1221,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T18:09:42.412Z"
+    },
+    {
+      "agent": "generation",
+      "name": "Kavi",
+      "ms": 5334,
+      "tokens": 1034,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T18:09:33.837Z"
+    },
+    {
+      "agent": "creative",
+      "name": "Keshav",
+      "ms": 1083,
+      "tokens": 908,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T18:09:28.502Z"
+    },
+    {
+      "agent": "research",
+      "name": "Ved",
+      "ms": 1057,
+      "tokens": 780,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T18:09:27.418Z"
+    },
+    {
+      "agent": "onboard",
+      "name": "Aarav",
+      "ms": 1243,
+      "tokens": 763,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T18:09:26.360Z"
+    },
+    {
+      "agent": "reviewer",
+      "name": "Neer",
+      "ms": 11359,
+      "tokens": 1077,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T18:09:04.678Z"
+    },
+    {
+      "agent": "generation",
+      "name": "Kavi",
+      "ms": 1107,
+      "tokens": 1107,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T18:08:53.318Z"
+    },
+    {
+      "agent": "creative",
+      "name": "Keshav",
+      "ms": 1236,
+      "tokens": 870,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T18:08:52.210Z"
+    },
+    {
+      "agent": "research",
+      "name": "Ved",
+      "ms": 1035,
+      "tokens": 748,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T18:08:50.973Z"
+    },
+    {
+      "agent": "onboard",
+      "name": "Aarav",
+      "ms": 1312,
+      "tokens": 787,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T18:08:49.936Z"
+    },
+    {
+      "agent": "reviewer",
+      "name": "Neer",
+      "ms": 12604,
+      "tokens": 1233,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T17:58:35.479Z"
+    },
+    {
+      "agent": "generation",
+      "name": "Kavi",
+      "ms": 1323,
+      "tokens": 1132,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T17:58:22.874Z"
+    },
+    {
+      "agent": "creative",
+      "name": "Keshav",
+      "ms": 919,
+      "tokens": 839,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T17:58:21.550Z"
+    },
+    {
+      "agent": "research",
+      "name": "Ved",
+      "ms": 1055,
+      "tokens": 755,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T17:58:20.630Z"
+    },
+    {
+      "agent": "onboard",
+      "name": "Aarav",
+      "ms": 1566,
+      "tokens": 798,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T17:58:19.573Z"
+    },
+    {
+      "agent": "reviewer",
+      "name": "Neer",
+      "ms": 1232,
+      "tokens": 1136,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T17:48:03.179Z"
+    },
+    {
+      "agent": "generation",
+      "name": "Kavi",
+      "ms": 3401,
+      "tokens": null,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T17:48:01.946Z"
+    },
+    {
+      "agent": "creative",
+      "name": "Keshav",
+      "ms": 870,
+      "tokens": 856,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T17:47:58.544Z"
+    },
+    {
+      "agent": "research",
+      "name": "Ved",
+      "ms": 1793,
+      "tokens": 742,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T17:47:57.673Z"
+    },
+    {
+      "agent": "onboard",
+      "name": "Aarav",
+      "ms": 1047,
+      "tokens": 744,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T17:47:55.879Z"
+    },
+    {
+      "agent": "reviewer",
+      "name": "Neer",
+      "ms": 1206,
+      "tokens": 1208,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T17:46:31.444Z"
+    },
+    {
+      "agent": "generation",
+      "name": "Kavi",
+      "ms": 1071,
+      "tokens": 992,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T17:46:30.212Z"
+    },
+    {
+      "agent": "creative",
+      "name": "Keshav",
+      "ms": 1217,
+      "tokens": 966,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T17:46:29.054Z"
+    },
+    {
+      "agent": "research",
+      "name": "Ved",
+      "ms": 1113,
+      "tokens": 779,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T17:46:27.823Z"
+    },
+    {
+      "agent": "onboard",
+      "name": "Aarav",
+      "ms": 1225,
+      "tokens": 786,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-20T17:46:26.710Z"
+    }
+  ],
+  "settings": {
+    "model": null,
+    "autoSchedule": true,
+    "timezone": "Asia/Kolkata"
+  }
+}

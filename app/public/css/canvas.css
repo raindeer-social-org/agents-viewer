@@ -1,0 +1,157 @@
+/* Infinite canvas engine — companion to /js/studio/canvas.js.
+   Every class is `cv-` prefixed. Tokens are borrowed from /styles.css so the
+   canvas reads as the same product. Light theme only. */
+
+.cv-root{
+  position:relative;overflow:hidden;background:var(--snow-canvas);border-radius:14px;
+  touch-action:none;user-select:none;-webkit-user-select:none;
+  color:var(--ink-2);font-family:var(--font-sans);
+  contain:layout paint;
+}
+
+/* ── pan surface + transform layer ───────────────────────────── */
+.cv-viewport{position:absolute;inset:0;cursor:grab;overscroll-behavior:contain}
+.cv-root[data-panning="true"] .cv-viewport,
+.cv-root[data-panning="true"] .cv-node{cursor:grabbing}
+.cv-root[data-space="true"] .cv-viewport,
+.cv-root[data-space="true"] .cv-node{cursor:grab}
+
+.cv-layer{
+  position:absolute;left:0;top:0;width:0;height:0;
+  transform-origin:0 0;will-change:transform;
+}
+
+/* The dot grid lives inside the transform layer, so it pans and scales with
+   the graph. Offsets are multiples of the 24px step so dots stay on-lattice. */
+.cv-grid{
+  position:absolute;left:-24984px;top:-24984px;width:49968px;height:49968px;
+  background-image:radial-gradient(circle at 1px 1px,var(--hairline-bold) 1px,transparent 1.4px);
+  background-size:24px 24px;opacity:.6;pointer-events:none;
+}
+
+/* ── edges ───────────────────────────────────────────────────── */
+.cv-edges{position:absolute;overflow:visible;pointer-events:none}
+
+.cv-edge-line{
+  fill:none;stroke:var(--hairline-bold);stroke-width:1.5;stroke-linecap:round;
+  vector-effect:non-scaling-stroke;transition:stroke .3s var(--ease-out);
+}
+.cv-edge[data-on="true"] .cv-edge-line{stroke:var(--cobalt-200)}
+
+.cv-edge-flow{
+  fill:none;stroke:var(--cobalt-500);stroke-width:1.8;stroke-linecap:round;
+  stroke-dasharray:5 9;vector-effect:non-scaling-stroke;
+  opacity:0;transition:opacity .3s var(--ease-out);
+}
+.cv-edge[data-on="true"] .cv-edge-flow{opacity:.85;animation:cv-dash .9s linear infinite}
+@keyframes cv-dash{to{stroke-dashoffset:-14}}
+
+.cv-port{
+  fill:var(--snow-card);stroke:var(--hairline-bold);stroke-width:1.5;
+  vector-effect:non-scaling-stroke;
+  transition:fill .3s var(--ease-out),stroke .3s var(--ease-out);
+}
+.cv-edge[data-on="true"] .cv-port{fill:var(--cobalt-500);stroke:var(--cobalt-200)}
+
+.cv-particles{pointer-events:none}
+.cv-particle{pointer-events:none}
+.cv-particle-halo{fill:var(--cobalt-300);opacity:.28}
+.cv-particle-core{fill:var(--cobalt-600)}
+
+/* ── nodes ───────────────────────────────────────────────────── */
+.cv-node{
+  position:absolute;background:var(--snow-card);
+  border:1px solid var(--hairline);border-radius:13px;box-shadow:var(--shadow-sm);
+  transition:border-color .3s var(--ease-out),box-shadow .35s var(--ease-out),
+             transform .35s var(--ease-cinema);
+}
+.cv-node.cv-clickable{cursor:pointer}
+.cv-node.cv-clickable:hover{border-color:var(--hairline-bold);box-shadow:var(--shadow-md)}
+
+.cv-node-body{
+  width:100%;height:100%;overflow:hidden;border-radius:12px;
+  font-size:.8125rem;line-height:1.5;color:var(--ink-2);
+}
+
+/* state: active — cobalt edge, soft halo, a breathing ring, slightly raised */
+.cv-node[data-state="active"]{
+  border-color:var(--cobalt-400);
+  box-shadow:0 0 0 4px var(--cobalt-50),var(--shadow-md);
+  transform:translateY(-2px);
+}
+.cv-node[data-state="active"]::after{
+  content:"";position:absolute;inset:-4px;border-radius:17px;
+  border:1.5px solid var(--cobalt-400);pointer-events:none;opacity:0;
+  animation:cv-ring 2.4s var(--ease-out) infinite;
+}
+@keyframes cv-ring{
+  0%{opacity:.5;transform:scale(1)}
+  70%{opacity:0;transform:scale(1.05)}
+  100%{opacity:0;transform:scale(1.05)}
+}
+
+/* state: done — settled, positive hairline */
+.cv-node[data-state="done"]{
+  border-color:var(--positive);
+  box-shadow:0 0 0 3px var(--positive-wash),var(--shadow-xs);
+}
+
+/* state: error */
+.cv-node[data-state="error"]{
+  border-color:var(--negative);
+  box-shadow:0 0 0 3px var(--negative-wash),var(--shadow-xs);
+}
+
+/* ── zoom toolbar (bottom-left) ──────────────────────────────── */
+.cv-tools{
+  position:absolute;left:12px;bottom:12px;z-index:3;
+  display:flex;align-items:center;gap:2px;padding:4px;
+  background:var(--snow-card);border:1px solid var(--hairline);
+  border-radius:10px;box-shadow:var(--shadow-sm);
+}
+.cv-tool{
+  height:26px;min-width:26px;padding:0 8px;border:1px solid transparent;
+  background:transparent;border-radius:7px;color:var(--ink-2);
+  font-family:var(--font-sans);font-size:.75rem;line-height:1;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;
+  transition:background .12s var(--ease-out),color .12s var(--ease-out);
+}
+.cv-tool:hover{background:var(--snow-2);color:var(--ink)}
+.cv-tool:active{background:var(--snow-3)}
+.cv-tool-icon{font-size:.9375rem;line-height:1;display:block;margin-top:-1px}
+.cv-tool-text{font-size:.6875rem}
+.cv-tool-sep{width:1px;height:15px;background:var(--hairline);margin:0 3px;flex:none}
+.cv-zoom{
+  font-family:var(--font-mono);font-size:.5625rem;letter-spacing:.1em;
+  color:var(--ink-4);padding:0 8px 0 4px;min-width:42px;text-align:right;
+  font-variant-numeric:tabular-nums;
+}
+
+/* ── minimap (bottom-right, 168×108 including the card) ──────── */
+.cv-mini{
+  position:absolute;right:12px;bottom:12px;z-index:3;padding:5px;line-height:0;
+  background:var(--snow-card);border:1px solid var(--hairline);
+  border-radius:10px;box-shadow:var(--shadow-sm);cursor:pointer;
+  transition:box-shadow .18s var(--ease-out);
+}
+.cv-mini:hover{box-shadow:var(--shadow-md)}
+.cv-mini-svg{display:block}
+.cv-mini-node{
+  fill:var(--snow-3);stroke:var(--hairline-bold);stroke-width:1;
+  transition:fill .3s var(--ease-out),stroke .3s var(--ease-out);
+}
+.cv-mini-node[data-state="active"]{fill:var(--cobalt-300);stroke:var(--cobalt-600)}
+.cv-mini-node[data-state="done"]{fill:#BFE3D0;stroke:var(--positive)}
+.cv-mini-node[data-state="error"]{fill:#F0C9C5;stroke:var(--negative)}
+.cv-mini-view{
+  fill:rgba(0,83,204,.07);stroke:var(--cobalt-500);stroke-width:1;
+  pointer-events:none;
+}
+
+/* ── reduced motion: no flowing particles, no breathing ring ─── */
+@media (prefers-reduced-motion:reduce){
+  .cv-edge[data-on="true"] .cv-edge-flow{animation:none;opacity:.9}
+  .cv-node[data-state="active"]::after{animation:none;opacity:.35;transform:none}
+  .cv-node,.cv-edge-line,.cv-edge-flow,.cv-port,.cv-mini-node,.cv-mini{transition:none}
+  .cv-node[data-state="active"]{transform:none}
+}

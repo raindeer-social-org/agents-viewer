@@ -1,0 +1,703 @@
+/* previews.css — authentic, light-mode social platform post previews.
+   Everything here is namespaced `pv-`. Each preview deliberately ignores the
+   product's design tokens and uses its own platform's real palette, type and
+   metrics; only the character counter under a preview borrows app chrome. */
+
+.pv,
+.pv *,
+.pv *::before,
+.pv *::after { box-sizing: border-box; }
+
+.pv {
+  --pv-w: 560px;
+  color-scheme: light;
+  width: 100%;
+  max-width: var(--pv-w);
+  margin: 0 auto;
+  display: block;
+  text-align: left;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.pv p { margin: 0; }
+.pv .pv-i { display: block; flex: none; }
+.pv b { font-weight: 600; }
+
+/* letter avatars — each platform re-skins size + radius */
+.pv-av {
+  display: grid;
+  place-items: center;
+  flex: none;
+  border-radius: 50%;
+  background: linear-gradient(140deg, #5590F3 0%, #0053CC 55%, #04338A 100%);
+  color: #fff;
+  font-weight: 600;
+  line-height: 1;
+  user-select: none;
+}
+
+/* ── media placeholder (shared) ───────────────────────────────── */
+
+.pv-media {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  background-color: #E7EBF2;
+  background-size: cover;
+  isolation: isolate;
+}
+.pv-media-wide { aspect-ratio: 16 / 10; }
+.pv-media-square { aspect-ratio: 1 / 1; }
+
+.pv-media-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, .16) 0 1px, transparent 1px 34px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, .16) 0 1px, transparent 1px 34px),
+    radial-gradient(120% 90% at 50% 8%, rgba(255, 255, 255, .26), transparent 62%);
+  pointer-events: none;
+}
+
+.pv-media-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px 26px;
+  text-align: center;
+}
+
+.pv-media-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px 4px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .74);
+  color: #1B2437;
+  font: 500 9.5px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  backdrop-filter: blur(3px);
+}
+.pv-media-badge .pv-i { color: #1B2437; }
+
+.pv-media-prompt {
+  max-width: 34ch;
+  color: #fff;
+  font: 500 13.5px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  text-shadow: 0 1px 10px rgba(12, 20, 40, .38);
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pv-media-neutral .pv-media-prompt { color: #4B586F; text-shadow: none; }
+.pv-media-neutral .pv-media-badge { background: rgba(255, 255, 255, .9); color: #66748F; }
+.pv-media-neutral .pv-media-badge .pv-i { color: #66748F; }
+.pv-media-neutral .pv-media-alt { background: rgba(255, 255, 255, .78); color: #66748F; }
+.pv-media-neutral .pv-media-alt-k { background: rgba(102, 116, 143, .16); color: #4B586F; }
+
+.pv-media-alt {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 9px;
+  border-radius: 8px;
+  background: rgba(15, 20, 25, .46);
+  backdrop-filter: blur(4px);
+  color: rgba(255, 255, 255, .92);
+  font: 400 10.5px/1.35 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pv-media-alt-k {
+  flex: none;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, .22);
+  font-size: 8.5px;
+  letter-spacing: .12em;
+  font-weight: 600;
+}
+
+/* ── character counter (neutral app chrome, sits outside the card) ── */
+
+.pv-count {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  margin-top: 9px;
+  padding: 0 2px;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 9.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-4, #9AA4BA);
+}
+.pv-count-n { color: var(--ink-2, #3E4C6B); font-size: 10.5px; }
+.pv-count-s { color: var(--ink-4, #9AA4BA); }
+.pv-count-l { margin-left: 4px; }
+.pv-count-over .pv-count-n,
+.pv-count-over .pv-count-l { color: var(--negative, #C6473D); }
+
+/* ══ X ═══════════════════════════════════════════════════════════ */
+
+.pv-x {
+  --pv-w: 560px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "TwitterChirp", Roboto, Helvetica, Arial, sans-serif;
+  color: #0F1419;
+}
+.pv-x-card {
+  display: flex;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #fff;
+  border: 1px solid #EFF3F4;
+  border-radius: 16px;
+}
+.pv-x-gut { flex: none; }
+.pv-x-av { width: 40px; height: 40px; font-size: 17px; }
+.pv-x-main { flex: 1; min-width: 0; }
+
+.pv-x-head {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 15px;
+  line-height: 20px;
+  min-width: 0;
+}
+.pv-x-name {
+  font-weight: 700;
+  color: #0F1419;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 46%;
+}
+.pv-x-badge { display: flex; color: #1D9BF0; flex: none; }
+.pv-x-handle,
+.pv-x-time { color: #536471; font-weight: 400; white-space: nowrap; }
+.pv-x-handle { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.pv-x-sep { color: #536471; flex: none; }
+.pv-x-dots { margin-left: auto; color: #536471; display: flex; padding-left: 8px; flex: none; }
+
+.pv-x-body {
+  margin-top: 2px;
+  font-size: 15px;
+  line-height: 20px;
+  color: #0F1419;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.pv-x-tags { margin-top: 2px; font-size: 15px; line-height: 20px; }
+.pv-x-link { color: #1D9BF0; }
+
+.pv-x-media {
+  margin-top: 12px;
+  border-radius: 16px;
+  border: 1px solid #CFD9DE;
+}
+
+.pv-x-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 425px;
+  margin-top: 12px;
+  color: #536471;
+}
+.pv-x-act {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  line-height: 16px;
+  color: #536471;
+}
+.pv-x-ico { display: flex; }
+.pv-x-n { font-size: 12.5px; color: #8B98A5; }
+.pv-x-tail { display: inline-flex; align-items: center; gap: 14px; }
+.pv-x-reply:hover, .pv-x-share:hover, .pv-x-views:hover, .pv-x-save:hover { color: #1D9BF0; }
+.pv-x-repost:hover { color: #00BA7C; }
+.pv-x-like:hover { color: #F91880; }
+
+/* ══ LinkedIn ════════════════════════════════════════════════════ */
+
+.pv-li {
+  --pv-w: 555px;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: rgba(0, 0, 0, .9);
+}
+.pv-li-card {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, .08);
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .02), 0 2px 3px rgba(0, 0, 0, .06);
+  overflow: hidden;
+}
+.pv-li-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 12px 16px 0;
+}
+.pv-li-av {
+  width: 48px;
+  height: 48px;
+  font-size: 20px;
+  background: linear-gradient(140deg, #378FE9 0%, #0A66C2 60%, #004182 100%);
+}
+.pv-li-id { min-width: 0; flex: 1; padding-top: 1px; }
+.pv-li-name {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  color: rgba(0, 0, 0, .9);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pv-li-deg { font-weight: 400; color: rgba(0, 0, 0, .6); font-size: 12px; }
+.pv-li-sub {
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(0, 0, 0, .6);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pv-li-meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(0, 0, 0, .6);
+}
+.pv-li-globe { color: rgba(0, 0, 0, .6); }
+.pv-li-dots { color: rgba(0, 0, 0, .6); display: flex; flex: none; padding: 2px; }
+
+.pv-li-body {
+  padding: 10px 16px 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, .9);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.pv-li-ell { color: rgba(0, 0, 0, .9); }
+.pv-li-more { color: rgba(0, 0, 0, .6); margin-left: 4px; cursor: pointer; }
+.pv-li-more:hover { color: #0A66C2; text-decoration: underline; }
+.pv-li-tags {
+  padding: 4px 16px 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+.pv-li-link { color: #0A66C2; font-weight: 600; }
+.pv-li-media { margin-top: 12px; border-top: 1px solid rgba(0, 0, 0, .08); border-bottom: 1px solid rgba(0, 0, 0, .08); }
+
+.pv-li-social {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 16px;
+  font-size: 12px;
+  color: rgba(0, 0, 0, .6);
+}
+.pv-li-pills { display: inline-flex; align-items: center; margin-right: 4px; }
+.pv-li-pill {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid #fff;
+  color: #fff;
+  margin-left: -4px;
+}
+.pv-li-pill:first-child { margin-left: 0; }
+.pv-li-pill-like { background: #378FE9; }
+.pv-li-pill-clap { background: #6DAE4F; }
+.pv-li-pill-love { background: #DF704D; }
+.pv-li-pill .pv-i { width: 10px; height: 10px; }
+.pv-li-scount { color: rgba(0, 0, 0, .6); }
+.pv-li-scount:hover { color: #0A66C2; text-decoration: underline; }
+.pv-li-spacer { flex: 1; }
+.pv-li-dot { color: rgba(0, 0, 0, .6); }
+
+.pv-li-bar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px 6px;
+  border-top: 1px solid rgba(0, 0, 0, .08);
+}
+.pv-li-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 40px;
+  border-radius: 4px;
+  color: rgba(0, 0, 0, .6);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  min-width: 0;
+}
+.pv-li-btn:hover { background: rgba(0, 0, 0, .08); color: rgba(0, 0, 0, .75); }
+.pv-li-btn span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* ══ Instagram ═══════════════════════════════════════════════════ */
+
+.pv-ig {
+  --pv-w: 470px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #262626;
+}
+.pv-ig-card {
+  background: #fff;
+  border: 1px solid #DBDBDB;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.pv-ig-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+}
+.pv-ig-ring {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  padding: 2px;
+  display: grid;
+  place-items: center;
+  background: conic-gradient(from 200deg, #FEDA75, #FA7E1E, #D62976, #962FBF, #4F5BD5, #FEDA75);
+}
+.pv-ig-av {
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  border: 2px solid #fff;
+  background: linear-gradient(140deg, #D62976 0%, #962FBF 60%, #4F5BD5 100%);
+}
+.pv-ig-id { flex: 1; min-width: 0; }
+.pv-ig-user {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 17px;
+  color: #262626;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pv-ig-loc {
+  font-size: 11px;
+  line-height: 14px;
+  color: #262626;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pv-ig-dots { color: #262626; display: flex; flex: none; }
+
+.pv-ig-media { border-top: 1px solid #EFEFEF; border-bottom: 1px solid #EFEFEF; }
+
+.pv-ig-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px 4px;
+  color: #262626;
+}
+.pv-ig-left { display: inline-flex; align-items: center; gap: 14px; }
+.pv-ig-act { display: flex; color: #262626; cursor: pointer; }
+.pv-ig-act:hover { color: #737373; }
+.pv-ig-save { color: #262626; }
+
+.pv-ig-likes {
+  padding: 2px 12px 0;
+  font-size: 13px;
+  line-height: 18px;
+  color: #262626;
+}
+.pv-ig-caption {
+  padding: 5px 12px 0;
+  font-size: 13px;
+  line-height: 18px;
+  color: #262626;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.pv-ig-cuser { font-weight: 600; }
+.pv-ig-ctext { color: #262626; }
+.pv-ig-ell { color: #262626; }
+.pv-ig-more { color: #737373; cursor: pointer; }
+.pv-ig-tags {
+  padding: 2px 12px 0;
+  font-size: 13px;
+  line-height: 18px;
+  white-space: pre-wrap;
+}
+.pv-ig-link { color: #00376B; }
+.pv-ig-time {
+  padding: 7px 12px 12px;
+  font-size: 10px;
+  letter-spacing: .2px;
+  text-transform: uppercase;
+  color: #737373;
+}
+
+/* ══ Threads ═════════════════════════════════════════════════════ */
+
+.pv-th {
+  --pv-w: 540px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #000;
+}
+.pv-th-card {
+  display: flex;
+  gap: 10px;
+  padding: 14px 18px 16px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, .08);
+  border-radius: 18px;
+}
+.pv-th-gut {
+  flex: none;
+  width: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pv-th-av { width: 36px; height: 36px; font-size: 15px; background: linear-gradient(140deg, #4B4B4B 0%, #101010 100%); }
+.pv-th-line {
+  flex: 1;
+  width: 2px;
+  min-height: 14px;
+  margin-top: 8px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, .12);
+}
+.pv-th-main { flex: 1; min-width: 0; }
+
+.pv-th-head { display: flex; align-items: center; gap: 4px; min-width: 0; }
+.pv-th-name {
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 19px;
+  color: #000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pv-th-badge { display: flex; color: #0095F6; flex: none; }
+.pv-th-spacer { flex: 1; }
+.pv-th-time { font-size: 14px; color: #999; flex: none; }
+.pv-th-dots { color: #999; display: flex; flex: none; padding-left: 8px; }
+
+.pv-th-body {
+  margin-top: 2px;
+  font-size: 15px;
+  line-height: 21px;
+  color: #000;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.pv-th-tags { margin-top: 2px; font-size: 15px; line-height: 21px; }
+.pv-th-link { color: #0095F6; }
+.pv-th-media { margin-top: 10px; border-radius: 12px; border: 1px solid rgba(0, 0, 0, .1); }
+
+.pv-th-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 12px;
+  margin-left: -4px;
+  color: #000;
+}
+.pv-th-act {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: #000;
+  cursor: pointer;
+}
+.pv-th-act:hover { background: rgba(0, 0, 0, .05); }
+.pv-th-foot {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: 14px;
+  color: #999;
+}
+.pv-th-fdot { color: #999; }
+
+/* ══ Facebook ════════════════════════════════════════════════════ */
+
+.pv-fb {
+  --pv-w: 500px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Roboto, Helvetica, Arial, sans-serif;
+  color: #050505;
+}
+.pv-fb-card {
+  background: #fff;
+  border: 1px solid #CED0D4;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+  overflow: hidden;
+}
+.pv-fb-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px 0;
+}
+.pv-fb-av { width: 40px; height: 40px; font-size: 17px; background: linear-gradient(140deg, #4599FF 0%, #1877F2 55%, #0B57C4 100%); }
+.pv-fb-id { flex: 1; min-width: 0; }
+.pv-fb-name {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 19px;
+  color: #050505;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pv-fb-meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  line-height: 17px;
+  color: #65676B;
+}
+.pv-fb-globe { color: #65676B; }
+.pv-fb-dot { color: #65676B; }
+.pv-fb-dots { color: #65676B; display: flex; flex: none; }
+
+.pv-fb-body {
+  padding: 10px 16px 0;
+  font-size: 15px;
+  line-height: 20px;
+  color: #050505;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.pv-fb-ell { color: #050505; }
+.pv-fb-more { color: #65676B; cursor: pointer; }
+.pv-fb-more:hover { text-decoration: underline; }
+.pv-fb-tags { padding: 4px 16px 0; font-size: 15px; line-height: 20px; }
+.pv-fb-link { color: #385898; }
+.pv-fb-media { margin-top: 12px; }
+
+.pv-fb-social {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 16px;
+  font-size: 13px;
+  color: #65676B;
+}
+.pv-fb-pills { display: inline-flex; align-items: center; margin-right: 3px; }
+.pv-fb-pill {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid #fff;
+  color: #fff;
+  margin-left: -5px;
+}
+.pv-fb-pill:first-child { margin-left: 0; }
+.pv-fb-pill-like { background: #1877F2; }
+.pv-fb-pill-love { background: #F3425F; }
+.pv-fb-pill .pv-i { width: 10px; height: 10px; }
+.pv-fb-scount { color: #65676B; }
+.pv-fb-scount:hover { text-decoration: underline; }
+.pv-fb-spacer { flex: 1; }
+
+.pv-fb-bar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px 6px;
+  border-top: 1px solid #CED0D4;
+}
+.pv-fb-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  height: 36px;
+  border-radius: 6px;
+  color: #65676B;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  min-width: 0;
+}
+.pv-fb-btn:hover { background: #F2F2F2; }
+.pv-fb-btn:first-child:hover { color: #1877F2; }
+.pv-fb-btn span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* ── narrow feeds (down to ~360px) ────────────────────────────── */
+
+@media (max-width: 430px) {
+  .pv-x-card { padding: 11px 12px; gap: 9px; border-radius: 14px; }
+  .pv-x-av { width: 36px; height: 36px; font-size: 15px; }
+  .pv-x-head, .pv-x-body, .pv-x-tags { font-size: 14px; line-height: 19px; }
+  .pv-x-actions { max-width: none; }
+  .pv-x-tail { gap: 10px; }
+
+  .pv-li-head { padding: 11px 12px 0; }
+  .pv-li-av { width: 42px; height: 42px; font-size: 18px; }
+  .pv-li-body, .pv-li-tags { padding-left: 12px; padding-right: 12px; }
+  .pv-li-social { padding: 8px 12px; }
+  .pv-li-btn { font-size: 12.5px; gap: 4px; }
+  .pv-li-btn .pv-i { width: 18px; height: 18px; }
+
+  .pv-ig-head { padding: 9px 10px; }
+  .pv-ig-actions { padding: 7px 10px 3px; }
+  .pv-ig-left { gap: 12px; }
+  .pv-ig-likes, .pv-ig-caption, .pv-ig-tags { padding-left: 10px; padding-right: 10px; }
+  .pv-ig-time { padding-left: 10px; padding-right: 10px; }
+
+  .pv-th-card { padding: 12px 13px 14px; border-radius: 15px; }
+  .pv-th-actions { gap: 10px; }
+
+  .pv-fb-head { padding: 11px 12px 0; }
+  .pv-fb-body, .pv-fb-tags { padding-left: 12px; padding-right: 12px; }
+  .pv-fb-social { padding: 9px 12px; }
+  .pv-fb-btn { font-size: 12.5px; gap: 5px; }
+
+  .pv-media-prompt { font-size: 12.5px; }
+  .pv-media-alt { font-size: 9.5px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pv * { transition: none !important; animation: none !important; }
+}

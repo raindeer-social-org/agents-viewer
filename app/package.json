@@ -1,0 +1,8 @@
+{
+  "name": "raindeer-mvp",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "raindeer.social MVP — eight-step content engine driven by the five-agent team.",
+  "scripts": { "start": "node server.js" }
+}

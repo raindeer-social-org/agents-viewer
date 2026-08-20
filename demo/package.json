@@ -1,0 +1,10 @@
+{
+  "name": "raindeer-pitch-demo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Live pitch demo — the raindeer.social five-agent marketing team on Groq.",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

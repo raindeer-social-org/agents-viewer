@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>raindeer.social — Your AI Marketing Team</title>
+<link rel="icon" type="image/png" href="/assets/logo-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Fragment+Mono:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="/">
+      <img src="/assets/logo-mark.png" alt="" width="34" height="34">
+      <span class="brand-name">raindeer<span class="dot">.</span>social</span>
+    </a>
+    <div class="nav-right">
+      <span class="chip-live"><i class="pulse" id="statusDot"></i><span id="statusText">checking groq</span></span>
+      <span class="hashtag">#MarketingThatThinks</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap page">
+
+  <section class="masthead">
+    <p class="eyebrow"><span class="rule"></span>Five agents · one orchestrator · live on Groq</p>
+    <h1>Your AI marketing team, <em>deployed</em>.</h1>
+    <p class="lede">Give it a brand and a topic. Onboard, Research, Creative, Generation and Review
+      run end to end and hand back publish-ready posts — the same pipeline that ships in the product.</p>
+  </section>
+
+  <div class="layout">
+
+    <!-- ── The brief ───────────────────────────────────────────── -->
+    <aside class="rail">
+      <form class="brief card" id="briefForm">
+        <span class="badge">The brief</span>
+
+        <div class="presets">
+          <span class="mini-label">Load a pilot brand</span>
+          <div class="preset-row" id="presets"></div>
+        </div>
+
+        <label>Brand name
+          <input name="brand" required placeholder="Slay Health" autocomplete="off">
+        </label>
+
+        <label>Website <span class="opt">optional</span>
+          <input name="website" placeholder="slay.health" autocomplete="off">
+        </label>
+
+        <label>What they do
+          <textarea name="what" rows="3" required placeholder="Preventive health testing for Indian professionals — full-body panels booked from a phone, results read by a doctor in 24 hours."></textarea>
+        </label>
+
+        <label>Audience <span class="opt">optional</span>
+          <input name="audience" placeholder="Working professionals, 25–40, metro India" autocomplete="off">
+        </label>
+
+        <label>Topic or goal for this post
+          <textarea name="topic" rows="2" required placeholder="Announce that 1 in 3 of our under-30 users had an abnormal marker — push preventive testing."></textarea>
+        </label>
+
+        <label>Tone
+          <select name="tone">
+            <option>Confident and plain-spoken</option>
+            <option>Warm and human</option>
+            <option>Sharp and contrarian</option>
+            <option>Expert and analytical</option>
+            <option>Playful and irreverent</option>
+          </select>
+        </label>
+
+        <fieldset class="platforms">
+          <legend>Platforms</legend>
+          <label class="check"><input type="checkbox" name="platforms" value="LinkedIn" checked><span>LinkedIn</span></label>
+          <label class="check"><input type="checkbox" name="platforms" value="X"><span>X</span></label>
+          <label class="check"><input type="checkbox" name="platforms" value="Instagram"><span>Instagram</span></label>
+        </fieldset>
+
+        <label>Model <span class="opt">groq</span>
+          <select name="model" id="modelSelect"><option>llama-3.3-70b-versatile</option></select>
+        </label>
+
+        <button class="btn btn-primary" id="runBtn" type="submit">
+          <span class="btn-label">Deploy the team</span><span class="arr">→</span>
+        </button>
+        <p class="foot-note" id="formNote">Five sequential Groq calls. Takes about 20–40 seconds.</p>
+      </form>
+    </aside>
+
+    <!-- ── The pipeline ────────────────────────────────────────── -->
+    <section class="pipeline" id="pipeline">
+      <div class="pipe-head">
+        <p class="eyebrow"><span class="rule"></span>The pipeline</p>
+        <span class="run-meter" id="runMeter" hidden></span>
+      </div>
+      <div class="stages" id="stages"></div>
+
+      <section class="output" id="output" hidden></section>
+    </section>
+  </div>
+
+  <footer class="page-foot">
+    <img src="/assets/logo-mark.png" alt="" width="26" height="26">
+    <span>www.raindeer.social — everything exists somewhere. Nothing exists together.</span>
+  </footer>
+</main>
+
+<script type="module" src="/app.js"></script>
+</body>
+</html>
