@@ -1,7 +1,7 @@
 // Client for the five-agent run. Streams SSE from /api/run, paints each agent
 // as it thinks, then renders the publish-ready output.
 
-const API_BASE_URL = window.location.hostname === 'localhost' ? '' : 'https://raindeer-backend.onrender.com'; // Replace with actual backend URL
+const API_BASE_URL = window.location.hostname === 'localhost' ? '' : 'https://agents-viewer.onrender.com'; // Replace with actual backend URL
 
 const $ = (s, r = document) => r.querySelector(s);
 const esc = (v) => String(v ?? '').replace(/[&<>"']/g, (c) =>
