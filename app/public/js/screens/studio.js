@@ -3,7 +3,7 @@
 // rendered as the platform itself would render it.
 
 import { $, esc, arr, toast, pfBadge } from '../ui.js';
-import { ws, health, save } from '../state.js';
+import { ws, save } from '../state.js';
 import { runStream } from '../api.js';
 import { renderAgent } from '../pipeline.js';
 import { createCanvas } from '../studio/canvas.js';
@@ -304,8 +304,7 @@ export default {
         </div>
 
         <div id="stCanvas" style="position:absolute;inset:0"></div>
-        <div class="st-status" id="stStatus"><span>idle</span><span class="sep"></span>
-          <b>${esc(ws.settings.model || health.model || 'groq')}</b></div>
+        <div class="st-status" id="stStatus"><span>idle</span></div>
       </div>`;
 
     canvas = createCanvas($('#stCanvas', view), {
@@ -353,3 +352,9 @@ export default {
     canvas = null;
   }
 };
+
+// Collapsing the rail hands the canvas ~236px more width; re-centre once the
+// slide has finished so the graph doesn't sit off to one side.
+window.addEventListener('rail:toggle', () => {
+  if (canvas) setTimeout(() => canvas?.fit(), 300);
+});

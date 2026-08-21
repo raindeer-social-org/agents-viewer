@@ -9,7 +9,7 @@
     "tone": "Warm and human",
     "mood": "Bright / Bold",
     "platforms": [
-      "X"
+      "Facebook"
     ],
     "theme": "cobalt"
   },
@@ -129,7 +129,7 @@
     {
       "id": "p_mt1tb29srt74",
       "planKey": "plan-0",
-      "status": "reviewed",
+      "status": "published",
       "title": "Silent Signals, Career Wins",
       "hook": "Your next promotion shouldn't wait for a health scare",
       "platform": "LinkedIn",
@@ -155,7 +155,8 @@
         "summary": "All claims are verified, tone matches brand, and it fits LinkedIn limits."
       },
       "imagePrompt": "A sleek, modern home office scene with a laptop open to a health dashboard, a discreet medical test kit on the desk, and a confident professional looking focused, soft natural lighting, brand colors muted blue and teal",
-      "altText": "Home office with laptop displaying health results, a medical test kit nearby, and a professional ready for work"
+      "altText": "Home office with laptop displaying health results, a medical test kit nearby, and a professional ready for work",
+      "publishedAt": "2026-08-21T07:18:31.473Z"
     },
     {
       "id": "p_mt1tb29t64qc",
@@ -172,6 +173,46 @@
     }
   ],
   "runs": [
+    {
+      "agent": "reviewer",
+      "name": "Neer",
+      "ms": 12885,
+      "tokens": 1296,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-21T07:14:05.639Z"
+    },
+    {
+      "agent": "generation",
+      "name": "Kavi",
+      "ms": 1018,
+      "tokens": 1040,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-21T07:13:52.753Z"
+    },
+    {
+      "agent": "creative",
+      "name": "Keshav",
+      "ms": 1066,
+      "tokens": 926,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-21T07:13:51.733Z"
+    },
+    {
+      "agent": "research",
+      "name": "Ved",
+      "ms": 1269,
+      "tokens": 796,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-21T07:13:50.666Z"
+    },
+    {
+      "agent": "onboard",
+      "name": "Aarav",
+      "ms": 1438,
+      "tokens": 808,
+      "model": "openai/gpt-oss-120b",
+      "at": "2026-08-21T07:13:49.395Z"
+    },
     {
       "agent": "reviewer",
       "name": "Neer",
@@ -414,7 +455,7 @@
     }
   ],
   "settings": {
-    "model": null,
+    "model": "openai/gpt-oss-120b",
     "autoSchedule": true,
     "timezone": "Asia/Kolkata"
   }
